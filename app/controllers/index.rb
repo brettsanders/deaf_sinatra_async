@@ -11,5 +11,5 @@ post '/grandma' do
   else
     @grandma = 'NO NOT SINCE 1983!'
   end
-  erb :index
+  erb :index, layout: !request.xhr?
 end

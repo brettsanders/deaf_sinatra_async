@@ -4,4 +4,29 @@ $(document).ready(function() {
   // when we try to bind to them
 
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+
+  $("#talk-to-grandma").submit(function(e){
+    e.preventDefault();
+
+    $.ajax({
+      type: "POST",
+      url: "/grandma",
+      data: $("#talk-to-grandma").serialize(),
+      success: function(data){
+        // console.log(data);
+        console.log($(data).find("#return"));
+
+        // $("#return").html($(data).find("#return"));
+        $("body").html(data);
+      },
+      error: function(){
+        $("#message").html("Not Successful");
+      }
+    });
+  });
+
 });
+
+// .html
+// .text
+
